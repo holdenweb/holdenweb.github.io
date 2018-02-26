@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Felix Tech Blog - this</title>
+        <link rel="stylesheet" href="../theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="../">Felix Tech Blog </a></h1>
+                <nav><ul>
+                    <li><a href="../category/different.html">Different</a></li>
+                    <li><a href="../category/programming.html">Programming</a></li>
+                    <li><a href="../category/test.html">Test</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../sample-jupyter-notebook-2.html">Second Sample Jupyter Notebook</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-02-26T00:00:00+00:00">
+                Published: Mon 26 February 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/steve-holden.html">Steve Holden</a>
+        </address>
+<p>In <a href="../category/programming.html">Programming</a>.</p>
+<p>tags: <a href="../tag/this.html">this</a> <a href="../tag/that.html">that</a> <a href="../tag/the_other.html">the_other</a> </p>
+</footer><!-- /.post-info --><style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">getenv</span>
+<span class="kn">from</span> <span class="nn">jira</span> <span class="k">import</span> <span class="n">JIRA</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+
+<span class="n">statuses</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"To Do"</span><span class="p">,</span> <span class="s2">"In Progress"</span><span class="p">,</span> <span class="s2">"Code Review"</span><span class="p">,</span> <span class="s2">"QA"</span><span class="p">,</span> <span class="s2">"Won't Do"</span><span class="p">,</span> <span class="s2">"Done"</span><span class="p">)</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">"JIRA_USER"</span><span class="p">)</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">"JIRA_PASS"</span><span class="p">)</span>
+
+<span class="n">authed_jira</span> <span class="o">=</span> <span class="n">JIRA</span><span class="p">(</span><span class="s2">"https://globalstressindex.atlassian.net"</span><span class="p">,</span> <span class="n">basic_auth</span><span class="o">=</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">authed_jira</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">epics</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">search_issues</span><span class="p">(</span><span class="s2">"type = 'Epic'"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dd</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">edict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">epics</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">issuelinks</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">subtasks</span><span class="p">)</span>
+    <span class="n">dd</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">sd</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">j</span><span class="o">.</span><span class="n">search_issues</span><span class="p">(</span><span class="n">f</span><span class="s2">"""</span><span class="se">\"</span><span class="s2">epic link</span><span class="se">\"</span><span class="s2"> = '</span><span class="si">{e.key}</span><span class="s2">'"""</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"   "</span><span class="p">,</span> <span class="n">li</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">li</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="n">li</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">issuelinks</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">sd</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">points</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">li</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">customfield_10119</span><span class="p">)</span>
+    <span class="n">edict</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'summary'</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">summary</span><span class="p">),</span>
+        <span class="s1">'status'</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s1">'work_sum'</span><span class="p">:</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">sd</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">),</span>
+        <span class="s1">'points'</span><span class="p">:</span> <span class="p">{</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">points</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">80</span><span class="o">*</span><span class="s2">"-"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{s}</span><span class="s2">: </span><span class="si">{dd[s]}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">80</span><span class="o">*</span><span class="s2">"="</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>DEV-1262 To Do [] []
+    DEV-1265 To Do []
+    DEV-1245 Done []
+    DEV-1244 Done []
+    DEV-1234 Done []
+    DEV-1204 Done []
+DEV-1238 In Progress [] []
+    DEV-1240 To Do []
+    DEV-1239 To Do []
+    DEV-1223 To Do []
+    DEV-1113 To Do []
+    DEV-837 To Do []
+DEV-1231 To Do [] []
+    DEV-1243 To Do []
+    DEV-1242 To Do [<jira issuelink: id="14105">]
+    DEV-1241 In Progress [<jira issuelink: id="14105">]
+    DEV-1226 In Progress [<jira issuelink: id="14071">, <jira issuelink: id="14072">]
+    DEV-1222 To Do []
+    DEV-1212 Done [<jira issuelink: id="14056">]
+    DEV-1162 In Progress [<jira issuelink: id="14071">]
+    DEV-1142 Done [<jira issuelink: id="14068">]
+    DEV-966 Done [<jira issuelink: id="14135">]
+DEV-1170 To Do [] []
+    DEV-1172 To Do [<jira issuelink: id="14085">]
+    DEV-1171 To Do [<jira issuelink: id="14085">]
+    DEV-1067 To Do []
+    DEV-1065 To Do []
+    DEV-1064 To Do []
+    DEV-1011 To Do []
+DEV-1168 To Do [] []
+    DEV-1073 To Do []
+    DEV-1017 To Do []
+DEV-1166 To Do [] []
+    DEV-1260 Done []
+    DEV-1237 To Do []
+    DEV-1161 To Do []
+    DEV-1153 Done []
+    DEV-1132 Done []
+    DEV-968 To Do []
+    DEV-967 To Do []
+    DEV-453 To Do []
+DEV-1158 To Do [<jira issuelink: id="13928">] []
+DEV-1157 To Do [<jira issuelink: id="13928">, <jira issuelink: id="13927">] []
+    DEV-1235 QA []
+    DEV-1229 To Do []
+    DEV-1225 To Do [<jira issuelink: id="14072">, <jira issuelink: id="14068">]
+    DEV-1180 To Do []
+    DEV-1179 Won't Do [<jira issuelink: id="13989">, <jira issuelink: id="13990">]
+    DEV-1152 To Do [<jira issuelink: id="13920">]
+    DEV-1140 To Do []
+    DEV-1129 Done [<jira issuelink: id="13900">]
+DEV-1156 To Do [<jira issuelink: id="13927">, <jira issuelink: id="13989">] []
+    DEV-1214 Won't Do [<jira issuelink: id="14056">, <jira issuelink: id="14055">]
+    DEV-1213 Won't Do [<jira issuelink: id="14055">]
+    DEV-1211 Done []
+    DEV-1209 Done []
+    DEV-1208 Done []
+    DEV-1194 Done [<jira issuelink: id="14021">, <jira issuelink: id="14020">]
+    DEV-1193 Done [<jira issuelink: id="14017">, <jira issuelink: id="14016">]
+    DEV-1182 Done [<jira issuelink: id="13998">]
+    DEV-1173 Won't Do []
+    DEV-1167 To Do [<jira issuelink: id="13990">]
+    DEV-1165 To Do []
+    DEV-1160 Done []
+    DEV-1159 Done []
+    DEV-1151 Done [<jira issuelink: id="13998">, <jira issuelink: id="13920">]
+    DEV-1130 Done [<jira issuelink: id="13900">, <jira issuelink: id="13888">]
+    DEV-1109 Done [<jira issuelink: id="14021">, <jira issuelink: id="13828">, <jira issuelink: id="14020">]
+    DEV-1108 Done [<jira issuelink: id="14017">, <jira issuelink: id="13825">, <jira issuelink: id="13828">, <jira issuelink: id="14016">]
+    DEV-1102 Done [<jira issuelink: id="13894">, <jira issuelink: id="13895">]
+    DEV-1027 Done [<jira issuelink: id="13894">, <jira issuelink: id="13896">, <jira issuelink: id="13825">]
+    DEV-698 Done []
+DEV-1118 To Do [] []
+    DEV-1236 QA []
+    DEV-1233 To Do []
+    DEV-1232 To Do []
+    DEV-1220 Done []
+    DEV-1201 To Do []
+    DEV-1197 Done []
+    DEV-1196 To Do []
+    DEV-1190 To Do []
+    DEV-1189 To Do []
+    DEV-1188 To Do []
+    DEV-1164 Won't Do []
+    DEV-1155 Done []
+    DEV-1150 Done []
+    DEV-1145 In Progress [<jira issuelink: id="13903">]
+    DEV-1115 Won't Do []
+    DEV-1114 Done []
+    DEV-1106 To Do []
+    DEV-1090 Done []
+    DEV-1077 Done [<jira issuelink: id="14037">]
+    DEV-1063 To Do []
+    DEV-1052 Won't Do []
+    DEV-1047 Won't Do []
+    DEV-1045 To Do []
+    DEV-1043 To Do []
+    DEV-1042 Won't Do []
+    DEV-1039 To Do []
+    DEV-1038 To Do []
+    DEV-1035 To Do []
+    DEV-1033 Won't Do []
+    DEV-1032 To Do []
+    DEV-987 To Do []
+    DEV-978 Won't Do []
+    DEV-970 Won't Do [<jira issuelink: id="13604">]
+    DEV-961 Won't Do [<jira issuelink: id="13583">]
+    DEV-935 To Do []
+    DEV-901 Done [<jira issuelink: id="13504">]
+    DEV-899 To Do [<jira issuelink: id="13498">, <jira issuelink: id="13501">, <jira issuelink: id="13881">]
+    DEV-787 Won't Do [<jira issuelink: id="13332">, <jira issuelink: id="13335">]
+DEV-1110 To Do [] []
+    DEV-1205 In Progress []
+    DEV-1117 Won't Do []
+DEV-1084 To Do [] []
+    DEV-1250 To Do []
+    DEV-1249 Done []
+    DEV-1248 Done []
+    DEV-1149 To Do []
+    DEV-1147 To Do []
+    DEV-1135 Done []
+    DEV-1098 Done [<jira issuelink: id="13816">]
+    DEV-1086 Done [<jira issuelink: id="13816">]
+    DEV-1083 Done []
+DEV-1059 To Do [] []
+    DEV-990 To Do []
+DEV-1058 To Do [] []
+    DEV-951 To Do [<jira issuelink: id="13644">]
+DEV-1057 To Do [] []
+    DEV-1020 To Do []
+DEV-1056 To Do [] []
+    DEV-1036 To Do []
+    DEV-1022 To Do []
+    DEV-1006 To Do []
+    DEV-1004 To Do []
+DEV-1055 To Do [] []
+    DEV-1034 To Do []
+    DEV-1021 To Do []
+    DEV-1005 To Do [<jira issuelink: id="13695">]
+    DEV-1003 To Do [<jira issuelink: id="13695">]
+DEV-1002 To Do [<jira issuelink: id="14034">] []
+    DEV-1263 To Do []
+    DEV-1261 To Do []
+    DEV-1259 To Do []
+    DEV-1258 To Do []
+    DEV-1257 Code Review [<jira issuelink: id="14130">]
+    DEV-1256 To Do []
+    DEV-1252 To Do [<jira issuelink: id="14125">]
+    DEV-1251 To Do [<jira issuelink: id="14122">, <jira issuelink: id="14130">]
+    DEV-1198 QA []
+    DEV-1195 To Do [<jira issuelink: id="14024">]
+    DEV-1177 Done [<jira issuelink: id="13984">]
+    DEV-1176 QA []
+    DEV-1146 Done []
+    DEV-1076 To Do [<jira issuelink: id="13984">, <jira issuelink: id="14122">]
+    DEV-1074 To Do [<jira issuelink: id="14125">]
+    DEV-1061 Done []
+    DEV-1026 To Do []
+    DEV-874 Done [<jira issuelink: id="14024">]
+DEV-983 To Do [] []
+    DEV-1192 QA []
+    DEV-1191 Done []
+    DEV-1178 Done [<jira issuelink: id="13987">]
+    DEV-1175 Done [<jira issuelink: id="13987">]
+    DEV-1128 Won't Do []
+    DEV-1104 Done []
+    DEV-754 Done [<jira issuelink: id="13840">]
+    DEV-408 Won't Do [<jira issuelink: id="12843">, <jira issuelink: id="12836">]
+DEV-949 To Do [] []
+    DEV-1001 To Do []
+    DEV-997 To Do [<jira issuelink: id="13644">]
+    DEV-989 To Do []
+    DEV-959 To Do []
+    DEV-958 To Do []
+    DEV-957 To Do []
+    DEV-955 To Do []
+    DEV-954 To Do []
+    DEV-950 To Do []
+DEV-923 To Do [<jira issuelink: id="13531">] []
+    DEV-922 To Do [<jira issuelink: id="13533">, <jira issuelink: id="13525">, <jira issuelink: id="13530">]
+    DEV-921 To Do [<jira issuelink: id="13525">, <jira issuelink: id="13524">, <jira issuelink: id="13522">]
+    DEV-920 To Do [<jira issuelink: id="13523">, <jira issuelink: id="13521">]
+    DEV-919 To Do [<jira issuelink: id="13523">, <jira issuelink: id="13524">, <jira issuelink: id="13532">, <jira issuelink: id="13520">]
+DEV-917 Done [] []
+    DEV-914 Done [<jira issuelink: id="13512">]
+    DEV-913 Done [<jira issuelink: id="13512">]
+    DEV-912 Done [<jira issuelink: id="13510">]
+    DEV-911 Done [<jira issuelink: id="13511">]
+    DEV-910 Done [<jira issuelink: id="13511">, <jira issuelink: id="13510">]
+DEV-884 To Do [] []
+    DEV-1206 Done []
+    DEV-1078 Done []
+    DEV-641 Won't Do []
+    DEV-639 Won't Do []
+    DEV-637 Won't Do []
+DEV-881 Done [<jira issuelink: id="14034">] []
+DEV-878 To Do [] []
+    DEV-1221 Won't Do []
+    DEV-1062 Done [<jira issuelink: id="13829">]
+    DEV-1054 Done []
+    DEV-1053 Done []
+    DEV-947 Done [<jira issuelink: id="13830">, <jira issuelink: id="13829">]
+    DEV-825 Done []
+    DEV-822 Done [<jira issuelink: id="13830">]
+DEV-871 To Do [] []
+    DEV-797 To Do []
+    DEV-657 To Do []
+DEV-854 To Do [] []
+    DEV-1072 To Do []
+    DEV-1015 To Do []
+    DEV-853 Done []
+    DEV-852 To Do []
+DEV-849 Done [] []
+    DEV-850 Done []
+    DEV-842 Done []
+DEV-845 To Do [] []
+    DEV-846 Done [<jira issuelink: id="13533">]
+DEV-843 To Do [] []
+    DEV-991 To Do []
+    DEV-982 To Do []
+DEV-809 To Do [] []
+    DEV-814 To Do [<jira issuelink: id="13383">, <jira issuelink: id="13382">]
+    DEV-813 To Do [<jira issuelink: id="13382">]
+    DEV-810 To Do [<jira issuelink: id="13374">]
+    DEV-768 To Do [<jira issuelink: id="13383">]
+    DEV-767 To Do []
+    DEV-729 Won't Do []
+    DEV-710 To Do []
+DEV-808 To Do [<jira issuelink: id="13403">] []
+    DEV-766 To Do []
+    DEV-765 To Do []
+DEV-798 To Do [<jira issuelink: id="13403">] []
+    DEV-918 Done []
+    DEV-891 Done []
+    DEV-857 To Do []
+    DEV-818 To Do []
+    DEV-816 To Do []
+    DEV-799 Done []
+    DEV-778 To Do []
+    DEV-770 Done []
+    DEV-764 Done []
+    DEV-763 To Do []
+DEV-758 Done [] []
+    DEV-757 Done []
+    DEV-756 Done []
+    DEV-755 Done []
+DEV-749 Done [] []
+    DEV-1185 Done []
+    DEV-1127 Done []
+    DEV-1097 Won't Do [<jira issuelink: id="13811">]
+    DEV-1096 Done []
+    DEV-1095 Won't Do [<jira issuelink: id="13806">, <jira issuelink: id="13811">]
+    DEV-1094 Done [<jira issuelink: id="13803">]
+    DEV-1093 Done [<jira issuelink: id="13800">]
+    DEV-1092 Done [<jira issuelink: id="13797">, <jira issuelink: id="13800">]
+    DEV-1091 Done [<jira issuelink: id="13797">, <jira issuelink: id="13803">, <jira issuelink: id="13806">]
+    DEV-1089 Done []
+    DEV-1088 Done []
+    DEV-971 Done [<jira issuelink: id="13607">]
+    DEV-965 Done [<jira issuelink: id="13593">, <jira issuelink: id="13607">]
+    DEV-750 Done [<jira issuelink: id="13279">, <jira issuelink: id="13593">]
+DEV-746 Done [] []
+    DEV-925 Done [<jira issuelink: id="13538">]
+    DEV-880 Done []
+    DEV-748 Done [<jira issuelink: id="13276">, <jira issuelink: id="13538">]
+    DEV-745 Done [<jira issuelink: id="13269">, <jira issuelink: id="13272">, <jira issuelink: id="13276">]
+DEV-741 Done [] []
+    DEV-1199 Done [<jira issuelink: id="14037">]
+    DEV-1125 Done [<jira issuelink: id="13876">]
+    DEV-1123 Done [<jira issuelink: id="13869">, <jira issuelink: id="13903">]
+    DEV-1122 Done [<jira issuelink: id="13866">, <jira issuelink: id="13869">]
+    DEV-1121 Done [<jira issuelink: id="13863">, <jira issuelink: id="13866">]
+    DEV-1120 Done [<jira issuelink: id="13863">]
+    DEV-1119 Done [<jira issuelink: id="13876">]
+    DEV-1040 Done []
+    DEV-1019 Done [<jira issuelink: id="13686">]
+    DEV-1018 Done [<jira issuelink: id="13686">]
+    DEV-998 Done []
+    DEV-977 Done []
+    DEV-879 Done []
+    DEV-788 Won't Do [<jira issuelink: id="13335">]
+    DEV-747 Done [<jira issuelink: id="13272">]
+    DEV-744 Done [<jira issuelink: id="13266">, <jira issuelink: id="13269">]
+    DEV-743 Done [<jira issuelink: id="13263">, <jira issuelink: id="13266">]
+    DEV-742 Done [<jira issuelink: id="13259">, <jira issuelink: id="13263">]
+DEV-735 Done [] []
+    DEV-1181 Done []
+    DEV-981 Done [<jira issuelink: id="13622">]
+    DEV-980 Done [<jira issuelink: id="13619">]
+    DEV-877 Done [<jira issuelink: id="13619">, <jira issuelink: id="13622">]
+    DEV-736 Done [<jira issuelink: id="13247">, <jira issuelink: id="13259">]
+DEV-731 Done [] []
+    DEV-1087 Won't Do []
+    DEV-730 Done []
+    DEV-715 Done [<jira issuelink: id="13216">]
+    DEV-714 Done [<jira issuelink: id="13217">]
+    DEV-704 Done []
+DEV-726 Done [] []
+    DEV-1050 Done []
+    DEV-1048 Done []
+    DEV-1046 Done []
+    DEV-1044 Done []
+    DEV-994 Done []
+    DEV-985 Done [<jira issuelink: id="13625">]
+    DEV-964 Done [<jira issuelink: id="13625">]
+    DEV-900 Won't Do [<jira issuelink: id="13501">]
+    DEV-898 Done [<jira issuelink: id="13495">, <jira issuelink: id="13504">, <jira issuelink: id="13498">]
+    DEV-897 Done [<jira issuelink: id="13495">]
+    DEV-864 Done []
+    DEV-739 Done [<jira issuelink: id="13255">, <jira issuelink: id="13279">]
+DEV-725 Done [] []
+    DEV-1107 Done []
+    DEV-1041 Done []
+    DEV-1031 Done []
+    DEV-1030 Won't Do []
+    DEV-1029 Done []
+    DEV-1028 Done []
+    DEV-1000 Done []
+    DEV-999 Done []
+    DEV-984 Done []
+    DEV-976 Done []
+    DEV-974 Done [<jira issuelink: id="13615">]
+    DEV-973 Done [<jira issuelink: id="13612">]
+    DEV-969 Done []
+    DEV-962 Done []
+    DEV-945 Done [<jira issuelink: id="13612">, <jira issuelink: id="13615">]
+    DEV-937 Done []
+    DEV-929 Done []
+    DEV-924 Done [<jira issuelink: id="13583">, <jira issuelink: id="13604">]
+    DEV-905 Done []
+    DEV-904 Done []
+    DEV-869 Done []
+    DEV-859 Done []
+    DEV-826 Done []
+    DEV-815 Done []
+    DEV-806 Done []
+    DEV-805 Done []
+    DEV-793 Done []
+    DEV-790 Won't Do []
+    DEV-789 Won't Do []
+    DEV-786 Done [<jira issuelink: id="13329">, <jira issuelink: id="13332">]
+    DEV-782 Won't Do []
+    DEV-781 Done []
+    DEV-780 Done []
+    DEV-779 Done []
+    DEV-774 Done []
+    DEV-760 Done []
+    DEV-738 Done [<jira issuelink: id="13250">, <jira issuelink: id="13255">]
+    DEV-737 Done [<jira issuelink: id="13247">, <jira issuelink: id="13250">, <jira issuelink: id="13329">]
+DEV-720 To Do [] []
+    DEV-1228 To Do []
+    DEV-1227 In Progress []
+    DEV-655 To Do []
+    DEV-550 To Do [<jira issuelink: id="13025">]
+DEV-716 Done [] []
+    DEV-635 Won't Do [<jira issuelink: id="13131">, <jira issuelink: id="13133">, <jira issuelink: id="13132">]
+    DEV-595 Won't Do [<jira issuelink: id="13080">, <jira issuelink: id="13128">, <jira issuelink: id="13133">]
+    DEV-528 Won't Do [<jira issuelink: id="13131">, <jira issuelink: id="13128">, <jira issuelink: id="13127">]
+    DEV-520 Won't Do []
+    DEV-299 Won't Do []
+DEV-695 To Do [] []
+    DEV-697 To Do []
+DEV-694 Done [] []
+    DEV-1139 Done [<jira issuelink: id="13909">]
+    DEV-1138 Done [<jira issuelink: id="13896">, <jira issuelink: id="13895">]
+    DEV-1131 Done [<jira issuelink: id="13888">]
+    DEV-1116 Done []
+    DEV-1082 Won't Do [<jira issuelink: id="13782">]
+    DEV-1081 Done []
+    DEV-1080 Done [<jira issuelink: id="13782">]
+    DEV-1049 Done []
+    DEV-932 Done []
+DEV-651 Done [] []
+    DEV-930 Done []
+    DEV-928 Done [<jira issuelink: id="13545">, <jira issuelink: id="13544">]
+    DEV-927 Done [<jira issuelink: id="13544">]
+    DEV-926 Done [<jira issuelink: id="13545">]
+    DEV-860 Done []
+    DEV-836 Done []
+    DEV-801 Done []
+    DEV-792 Done [<jira issuelink: id="13347">]
+    DEV-791 Done [<jira issuelink: id="13347">]
+    DEV-751 Done []
+    DEV-672 Done []
+    DEV-656 Done [<jira issuelink: id="13214">]
+    DEV-654 Done [<jira issuelink: id="13215">]
+    DEV-653 Won't Do []
+    DEV-652 Done []
+    DEV-650 Done []
+    DEV-256 Done [<jira issuelink: id="13215">, <jira issuelink: id="13214">]
+DEV-604 To Do [] []
+    DEV-606 To Do []
+    DEV-605 To Do []
+    DEV-601 To Do []
+DEV-602 To Do [] []
+    DEV-855 Done []
+    DEV-812 To Do []
+    DEV-796 To Do []
+    DEV-771 To Do []
+    DEV-762 To Do []
+    DEV-761 Done []
+    DEV-718 Won't Do []
+    DEV-717 Done []
+    DEV-617 Done [<jira issuelink: id="13110">]
+    DEV-607 Done [<jira issuelink: id="13110">, <jira issuelink: id="13112">]
+    DEV-603 Done [<jira issuelink: id="13112">]
+DEV-586 To Do [] []
+    DEV-624 To Do []
+    DEV-583 Done []
+    DEV-581 Done []
+    DEV-563 Done []
+DEV-578 Done [] []
+    DEV-713 Won't Do []
+    DEV-711 Done []
+    DEV-669 Done [<jira issuelink: id="13176">]
+    DEV-668 Done [<jira issuelink: id="13173">, <jira issuelink: id="13176">]
+    DEV-645 Done []
+    DEV-640 Done []
+    DEV-638 Done []
+    DEV-636 Done [<jira issuelink: id="13173">]
+    DEV-592 Done []
+    DEV-568 Done []
+--------------------------------------------------------------------------------
+To Do: 34, In Progress: 1, Code Review: 0, QA: 0, Won't Do: 0, Done: 15
+================================================================================
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">edict</span><span class="p">[</span><span class="s1">'DEV-1084'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">li</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">issue</span><span class="p">(</span><span class="s2">"DEV-1142"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">li</span><span class="o">.</span><span class="vm">__dict__</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>import textwrap
+from IPython.display import HTML
+for k, e in edict.items():
+    text = textwrap.wrap(e['summary'], width=50)
+    if not text:
+        text = ['']
+    sched = textwrap.wrap(e['work_sum'], width=20)
+    if not sched:
+        sched = ['']
+    print("{k:10} | {sched} | {text}".format(k=k, text=text[0], sched=sched[0]))
+    lendiff = len(sched) - len(text)
+    if lendiff > 0:
+        text.extend([""] * lendiff)
+    else:
+        sched.extend([''] * -lendiff)
+    for s, l in zip(sched[1:], text[1:]):
+        print("           | {0:20} | {1}".format(s, l))
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'<table style="table-layout: fixed;width: 75%">'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="s2">"""</span>
+<span class="s2">    <tr></span>
+<span class="s2">        <td style="vertical-align: top;width:10%;"></span><span class="si">{k}</span><span class="s2"></td></span>
+<span class="s2">        <td style="vertical-align: top;width:70%;word-wrap: break-word"></span><span class="si">{e['summary']:}</span><span class="s2"></td></span>
+<span class="s2">        <td style="vertical-align: top;width:20%;word-wrap: break-word;word-break: break-all;font-family:'Courier New',monospace;font-weight:bold">{((e['work_sum']))}</td></span>
+<span class="s2">    </tr>"""</span><span class="p">)</span>
+
+<span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"</table>"</span><span class="p">)</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># List epics with issues in to-do, in-progress, code-review or QA</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">statuses</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"To Do"</span><span class="p">,</span> <span class="s2">"In Progress"</span><span class="p">,</span> <span class="s2">"Code Review"</span><span class="p">,</span> <span class="s2">"QA"</span><span class="p">,</span> <span class="s2">"Done"</span><span class="p">)</span>
+<span class="n">epics</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">search_issues</span><span class="p">(</span><span class="s2">"type = 'Epic'"</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+<span class="n">dd</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">epics</span><span class="p">:</span>
+    <span class="c1"># print(e.key, e.fields.status, e.fields.issuelinks, e.fields.subtasks)</span>
+    <span class="n">dd</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">sd</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">j</span><span class="o">.</span><span class="n">search_issues</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="se">\"</span><span class="s2">epic link</span><span class="se">\"</span><span class="s2"> = '</span><span class="si">{e.key}</span><span class="s2">'"</span><span class="p">):</span>
+        <span class="c1">#print("   ", li.key, li.fields.status, li.fields.issuelinks)</span>
+        <span class="n">sd</span><span class="p">[</span><span class="n">li</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">sd</span><span class="p">[</span><span class="n">status</span><span class="p">]</span> <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{e.key}</span><span class="s2">: (</span><span class="si">{e.fields.status.name}</span><span class="s2">)"</span><span class="p">,</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{s}</span><span class="s2">: </span><span class="si">{sd[s]}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">80</span><span class="o">*</span><span class="s2">"-"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{s}</span><span class="s2">: </span><span class="si">{dd[s]}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">80</span><span class="o">*</span><span class="s2">"="</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">board</span> <span class="ow">in</span> <span class="n">j</span><span class="o">.</span><span class="n">boards</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">board</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"DEV board"</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Can't find DEV board"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">sprint</span> <span class="ow">in</span> <span class="n">j</span><span class="o">.</span><span class="n">sprints</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">id</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sprint</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="s2">"ACTIVE"</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s2">"No active sprint in </span><span class="si">{board.name}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sprint_issues</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">search_issues</span><span class="p">(</span><span class="n">f</span><span class="s1">'sprint = </span><span class="si">{sprint.id}</span><span class="s1">'</span><span class="p">,</span>
+                                    <span class="n">fields</span><span class="o">=</span><span class="s2">"key,status"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">grouped_issues</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(((</span><span class="n">iss</span><span class="p">)</span> <span class="k">for</span> <span class="n">iss</span> <span class="ow">in</span> <span class="n">sprint_issues</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">grouped_issues</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wd</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">grouped_issues</span>
+    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="p">)</span><span class="o">==</span><span class="s2">"Won't Do"</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">wd</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"Phantom issues in sprint:"</span><span class="p">,</span> <span class="n">wd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">groupby</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">stat_func</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">i</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">name</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">groupby</span><span class="p">(</span><span class="n">grouped_issues</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">stat_func</span><span class="p">)</span>
+<span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ii</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">g</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So now we have the sprint swimlanes!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+
+<span class="kn">from</span> <span class="nn">jira</span> <span class="k">import</span> <span class="n">JIRA</span>
+
+<span class="n">jira</span> <span class="o">=</span> <span class="n">JIRA</span><span class="p">(</span><span class="s2">"https://globalstressindex.atlassian.net"</span><span class="p">,</span> <span class="n">basic_auth</span><span class="o">=</span><span class="p">(</span><span class="s1">'sh@felix.com'</span><span class="p">,</span> <span class="s1">'feSpdney1'</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATABASE</span> <span class="o">=</span> <span class="s2">"database.sqlite3"</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">DATABASE</span><span class="p">)</span>
+<span class="n">curs</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">curs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">    CREATE TABLE records (</span>
+<span class="s2">        id INTEGER PRIMARY KEY,</span>
+<span class="s2">        sprint VARCHAR,</span>
+<span class="s2">        stamp VARCHAR, </span>
+<span class="s2">        issue_key VARCHAR, </span>
+<span class="s2">        status VARCHAR,</span>
+<span class="s2">        epic VARCHAR,</span>
+<span class="s2">        estimate INTEGER);"""</span><span class="p">)</span>
+    <span class="n">curs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""INSERT INTO records (sprint, stamp, issue_key, status, epic, estimate)</span>
+<span class="s2">                    VALUES ('Pre-History', '0000-00-00T00:00:00.000000', NULL, NULL, NULL, NULL)"""</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span>
+    <span class="k">pass</span> <span class="c1"># Assumes table already exists</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sprint</span> <span class="k">import</span> <span class="n">Sprint</span>
+<span class="n">ss</span> <span class="o">=</span> <span class="n">Sprint</span><span class="o">.</span><span class="n">from_jira</span><span class="p">(</span><span class="s2">"DEV board"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/anaconda3/envs/jira/lib/python3.6/site-packages/jira/client.py:2949: Warning: Old private GreenHopper API is used, all parameters will be ignored.
+  warnings.warn('Old private GreenHopper API is used, all parameters will be ignored.', Warning)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ss</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>'DEV Sprint 53'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">codes</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'To Do'</span><span class="p">,</span> <span class="s1">'In Progress'</span><span class="p">,</span> <span class="s1">'Code Review'</span><span class="p">,</span> <span class="s1">'QA'</span><span class="p">,</span> <span class="s1">'Done'</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">with_status</span><span class="p">(</span><span class="n">c</span><span class="p">)))</span>
+<span class="n">then</span><span class="p">,</span> <span class="n">now</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">)</span>
+<span class="n">then</span><span class="p">,</span> <span class="n">now</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">y_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">y_pos</span><span class="o">-</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">now</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1"># could theoretically just add one more row per day of the sprint</span>
+<span class="c1"># this would mean a little tricky wrangling with widths</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">y_pos</span><span class="o">+</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">then</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'g'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">codes</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">"yesterday"</span><span class="p">,</span> <span class="s2">"today"</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'# Issues'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Shape of the sprint'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAi0AAAGzCAYAAADjbSfcAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4yLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvNQv5yAAAIABJREFUeJzt3Xl4FFUe7vG3E5JOQhYgJKyBsEnYdxgEJA4wiIgyKotyxwQZwGETQVRESVAxg4qCDOLACAwYFlERNzYXQEUFAREHZA9EWUX2SIDkd//w0tcmARMM6ZR8P8/Tz0OdPnX6V5VeXqpPVbvMzAQAAFDE+fm6AAAAgLwgtAAAAEcgtAAAAEcgtAAAAEcgtAAAAEcgtAAAAEcgtAAAAEcgtAAAAEcgtAAAAEcgtABFjMvl0qBBg3xdxlV18OBB3XnnnYqMjJTL5dKECRPyPUZiYqJCQ0OvQnW+MXPmTLlcLqWlpfm6FKDIIrQAhWTTpk268847VblyZQUFBalChQrq0KGDJk2a5OvSCt0DDzygpUuXauTIkZo9e7ZuuummXPtlZGQoOTlZK1asKNwCHWbz5s1KTk4m8OAPr5ivCwCuBatXr9aNN96oSpUqqW/fvipbtqzS09P1xRdfaOLEiRo8eLCvSyxUH330kW677TY9+OCDl+2XkZGhMWPGSJLi4+MLoTLf+dvf/qaePXvK7Xbne93NmzdrzJgxio+PV2xsbMEXBxQRhBagEIwdO1YRERFau3atSpQo4XXfoUOHfFSV7xw6dCjHfrhWnT59WsWLF5e/v7/8/f19XQ5QpPH1EFAIdu7cqTp16uT6QR0dHZ3rOm+99Zbq1q0rt9utOnXqaMmSJV7379mzRwMGDFDNmjUVHBysyMhIdevWLcdXBBfmSqxatUr9+/dXZGSkwsPDdc899+jo0aM5Hnfx4sVq06aNihcvrrCwMHXu3Fn/+9//8rSdu3btUrdu3VSqVCmFhIToT3/6k957770ctZiZJk+eLJfLJZfLletYaWlpioqKkiSNGTPG0zc5Odmr3w8//KCuXbsqNDRUUVFRevDBB5WVleXVJzs7WxMmTFCdOnUUFBSkMmXKqH///rlu/8UOHDig3r17q2LFinK73SpXrpxuu+02r/0cGxurW265RcuWLVPDhg0VFBSk2rVr68033/Qa68L2r1y5UgMGDFB0dLQqVqzodV9u43766adq3ry5goKCVLVqVc2aNctrzG7dukmSbrzxRs9+4is1/BERWoBCULlyZa1bt07ffvttnvp/+umnGjBggHr27KlnnnlGZ86c0R133KEjR454+qxdu1arV69Wz5499eKLL+q+++7Thx9+qPj4eGVkZOQYc9CgQdqyZYuSk5N1zz33KDU1VV27dpWZefrMnj1bnTt3VmhoqMaNG6fHH39cmzdvVuvWrX9zvsTBgwd1/fXXa+nSpRowYIDGjh2rM2fO6NZbb9XChQslSTfccINmz54tSerQoYNmz57tWb5YVFSUpkyZIkn661//6ul7++23e/pkZWWpY8eOioyM1HPPPae2bdtq/Pjxmjp1qtdY/fv314gRI9SqVStNnDhRvXv3Vmpqqjp27Khz585ddrvuuOMOLVy4UL1799ZLL72kIUOG6OTJk9q7d69Xv+3bt6tHjx7q1KmTUlJSVKxYMXXr1k3Lly/PMeaAAQO0efNmjR49Wo888shlH3/Hjh2688471aFDB40fP14lS5ZUYmKiJ0jecMMNGjJkiCTp0Ucf9eynWrVqXXZcwJEMwFW3bNky8/f3N39/f2vZsqU99NBDtnTpUjt79myOvpIsMDDQduzY4WnbuHGjSbJJkyZ52jIyMnKs+/nnn5skmzVrlqdtxowZJsmaNGni9XjPPPOMSbJFixaZmdnJkyetRIkS1rdvX68xDxw4YBERETnaLzZ06FCTZJ988omn7eTJk1alShWLjY21rKwsr20cOHDgZcczMzt8+LBJsqSkpBz3JSQkmCR74oknvNobNWpkTZo08Sx/8sknJslSU1O9+i1ZsiTX9l87evSoSbJnn332snVWrlzZJNkbb7zhaTt+/LiVK1fOGjVq5Gm78Ldo3bq1nT9/3muMC/ft3r07x7irVq3ytB06dMjcbrcNHz7c07ZgwQKTZB9//PFl6wScjiMtQCHo0KGDPv/8c916663auHGjnnnmGXXs2FEVKlTQ22+/naN/+/btVa1aNc9y/fr1FR4erl27dnnagoODPf8+d+6cjhw5ourVq6tEiRJav359jjH79eungIAAz/I//vEPFStWTO+//74kafny5Tp27Jjuuusu/fjjj56bv7+/WrRooY8//viy2/j++++refPmat26tactNDRU/fr1U1pamjZv3pyHPZV/9913n9dymzZtvPbTggULFBERoQ4dOnhtV5MmTRQaGnrZ7QoODlZgYKBWrFjxm18llS9fXn/96189yxe+gtuwYYMOHDjg1bdv3755nr9Su3ZttWnTxrMcFRWlmjVrem0jcK0gtACFpFmzZnrzzTd19OhRrVmzRiNHjtTJkyd155135vhAr1SpUo71S5Ys6fXB+fPPP2v06NGKiYmR2+1W6dKlFRUVpWPHjun48eM51q9Ro4bXcmhoqMqVK+f52mf79u2SpD//+c+Kioryui1btuw3Jwzv2bNHNWvWzNF+4WuKPXv2XHb9KxEUFOSZ93LBxftp+/btOn78uKKjo3Ns16lTpy67XW63W+PGjdPixYtVpkwZ3XDDDXrmmWdyhBBJql69eo75Odddd50k5fhqrUqVKnnexrw8F4BrBWcPAYUsMDBQzZo1U7NmzXTdddepd+/eWrBggZKSkjx9LvW/cPvV/JPBgwdrxowZGjp0qFq2bKmIiAi5XC717NlT2dnZ+a7rwjqzZ89W2bJlc9xfrFjRe7vIy9GK7OxsRUdHKzU1Ndf7Lw49Fxs6dKi6dOmit956S0uXLtXjjz+ulJQUffTRR2rUqNEV1f3ro2S/JS/PBeBaUfTehYBrSNOmTSVJ+/fvz/e6r7/+uhISEjR+/HhP25kzZ3Ts2LFc+2/fvl033nijZ/nUqVPav3+/br75ZknyfB0VHR2t9u3b57ueypUra+vWrTnav/vuO8/9+XWpM4vyo1q1avrggw/UqlWrfIWFi8cYPny4hg8fru3bt6thw4YaP368Xn31VU+fHTt2yMy8at62bZskXfVrpxTEfgKcgK+HgELw8ccf5/o/4wvzSXL7WuW3+Pv75xhz0qRJOU73vWDq1KleZ8pMmTJF58+fV6dOnSRJHTt2VHh4uJ5++ulcz6g5fPjwZeu5+eabtWbNGn3++eeettOnT2vq1KmKjY1V7dq187xtF4SEhEjSJYNYXnTv3l1ZWVl68sknc9x3/vz5y46dkZGhM2fOeLVVq1ZNYWFhyszM9Grft2+f5ywpSTpx4oRmzZqlhg0b5nrkqiAVL15c0u/bT4ATcKQFKASDBw9WRkaG/vrXvyouLk5nz57V6tWrNX/+fMXGxqp37975HvOWW27R7NmzFRERodq1a+vzzz/XBx98oMjIyFz7nz17Vu3atVP37t21detWvfTSS2rdurVuvfVWSb9MHJ0yZYr+9re/qXHjxurZs6eioqK0d+9evffee2rVqpX+9a9/XbKeRx55RHPnzlWnTp00ZMgQlSpVSv/973+1e/duvfHGG/Lzy///kYKDg1W7dm3Nnz9f1113nUqVKqW6deuqbt26eR6jbdu26t+/v1JSUvT111/rL3/5iwICArR9+3YtWLBAEydO1J133pnrutu2bfPss9q1a6tYsWJauHChDh48qJ49e3r1ve6669SnTx+tXbtWZcqU0fTp03Xw4EHNmDEj39udXw0bNpS/v7/GjRun48ePy+12689//vMlrwEEOJZPz10CrhGLFy+2e++91+Li4iw0NNQCAwOtevXqNnjwYDt48KBXX13idODKlStbQkKCZ/no0aPWu3dvK126tIWGhlrHjh3tu+++y9Hvwqm0K1eutH79+lnJkiUtNDTUevXqZUeOHMnxOB9//LF17NjRIiIiLCgoyKpVq2aJiYn21Vdf/eZ27ty50+68804rUaKEBQUFWfPmze3dd9/N0e9S25ib1atXW5MmTSwwMNDr9OeEhAQrXrx4jv5JSUmW21vb1KlTrUmTJhYcHGxhYWFWr149e+ihh2zfvn2XfOwff/zRBg4caHFxcVa8eHGLiIiwFi1a2GuvvebVr3Llyta5c2dbunSp1a9f39xut8XFxdmCBQu8+l34W6xduzbHY13qlOfOnTvn6Nu2bVtr27atV9u0adOsatWq5u/vz+nP+MNymTGbC/gjmzlzpnr37q21a9d65tCgYMXGxqpu3bp69913fV0K8IfGnBYAAOAIhBYAAOAIhBYAAOAIzGkBAACOwJEWAADgCIQWAADgCI6+uFx2drb27dunsLAwLmMNAIBDmJlOnjyp8uXL5+vCk44OLfv27VNMTIyvywAAAFcgPT1dFStWzHN/R4eWsLAwSb9sdHh4uI+rAQAAeXHixAnFxMR4PsfzytGh5cJXQuHh4YQWAAAcJr9TO5iICwAAHIHQAgAAHIHQAgAAHMHRc1oAAH8MZqbz588rKyvL16WgAPj7+6tYsWIFfjkSQgsAwKfOnj2r/fv3KyMjw9eloACFhISoXLlyCgwMLLAxCS0AAJ/Jzs7W7t275e/vr/LlyyswMJCLhTqcmens2bM6fPiwdu/erRo1auTrAnKXQ2gBAPjM2bNnlZ2drZiYGIWEhPi6HBSQ4OBgBQQEaM+ePTp79qyCgoIKZFwm4gIAfK6g/ieOouNq/E15lgAAAEcgtAAAAEdgTgsAoOhJTv5jP56PpaWlqUqVKtqwYYMaNmzo63LyjCMtAAAUMbGxsZowYYKvyyhyCC0AAPxBnT171tclFChCCwAA+TRr1ixFRkYqMzPTq71r167629/+JklatGiRGjdurKCgIFWtWlVjxozR+fPnJf1yLZPk5GRVqlRJbrdb5cuX15AhQyRJ8fHx2rNnjx544AG5XC6v69Z8+umnatOmjYKDgxUTE6MhQ4bo9OnTnvtjY2P15JNP6p577lF4eLj69esnSVqzZo0aNWqkoKAgNW3aVBs2bPCqOysrS3369FGVKlUUHBysmjVrauLEiZ77V61apYCAAB04cMBrvaFDh6pNmza/d3fmGXNaHCZ5RbKvS8hVcnyyr0sAgELTrVs3DRkyRG+//ba6desmSTp06JDee+89LVu2TJ988onuuecevfjii2rTpo127tzpCRBJSUl644039MILL2jevHmqU6eODhw4oI0bN0qS3nzzTTVo0ED9+vVT3759PY+5c+dO3XTTTXrqqac0ffp0HT58WIMGDdKgQYM0Y8YMT7/nnntOo0ePVlJSkiTp1KlTuuWWW9ShQwe9+uqr2r17t+6//36v7cnOzlbFihW1YMECRUZGavXq1erXr5/KlSun7t2764YbblDVqlU1e/ZsjRgxQpJ07tw5paam6plnnrl6O/oihBYAAPIpODhYd999t2bMmOEJLa+++qoqVaqk+Ph4dejQQY888ogSEhIkSVWrVtWTTz6phx56SElJSdq7d6/Kli2r9u3bKyAgQJUqVVLz5s0lSaVKlZK/v7/CwsJUtmxZz2OmpKSoV69eGjp0qCSpRo0aevHFF9W2bVtNmTLFcwG3P//5zxo+fLhnvalTpyo7O1uvvPKKgoKCVKdOHX3//ff6xz/+4ekTEBCgMWPGeJarVKmizz//XK+99pq6d+8uSerTp49mzJjhCS3vvPOOzpw547m/MPD1EAAAV6Bv375atmyZfvjhB0nSzJkzlZiYKJfLpY0bN+qJJ55QaGio59a3b1/Pbyx169ZNP//8s6pWraq+fftq4cKFnq+OLmXjxo2aOXOm15gdO3b0/BTCBU2bNvVab8uWLapfv77XVWlbtmyZY/zJkyerSZMmioqKUmhoqKZOnaq9e/d67k9MTNSOHTv0xRdfeLa3e/fuKl68eP533hXiSAsAAFegUaNGatCggWbNmqW//OUv+t///qf33ntP0i9fyYwZM0a33357jvWCgoIUExOjrVu36oMPPtDy5cs1YMAAPfvss1q5cqUCAgJyfbxTp06pf//+nrkvv1apUiXPv68kRMybN08PPvigxo8fr5YtWyosLEzPPvusvvzyS0+f6OhodenSRTNmzFCVKlW0ePFirVixIt+P9XsQWgAAuEJ///vfNWHCBP3www9q3769YmJiJEmNGzfW1q1bVb169UuuGxwcrC5duqhLly4aOHCg4uLitGnTJjVu3FiBgYHKysry6t+4cWNt3rz5smPmplatWpo9e7bOnDnjOdpy4WjJBZ999pmuv/56DRgwwNO2c+fOXLf3rrvuUsWKFVWtWjW1atUqX7X8Xnw9BADAFbr77rv1/fffa9q0abr33ns97aNHj9asWbM0ZswY/e9//9OWLVs0b948PfbYY5J++WrllVde0bfffqtdu3bp1VdfVXBwsCpXrizpl7OAVq1apR9++EE//vijJOnhhx/W6tWrNWjQIH399dfavn27Fi1apEGDBv1mjS6XS3379tXmzZv1/vvv67nnnvPqU6NGDX311VdaunSptm3bpscff1xr167NMVbHjh0VHh6up556Sr179/5d++5KcKQFAFD0OOQKtREREbrjjjv03nvvqWvXrp72jh076t1339UTTzyhcePGKSAgQHFxcfr73/8uSSpRooT++c9/atiwYcrKylK9evX0zjvvKDIyUpL0xBNPqH///qpWrZoyMzNlZqpfv75WrlypUaNGqU2bNjIzVatWTT169LhsjaGhoXrnnXd03333qVGjRqpdu7bGjRunO+64w9Onf//+2rBhg3r06CGXy6W77rpLAwYM0OLFi73G8vPzU2Jiop5++mndc889BbUb88xlZlboj1pATpw4oYiICB0/flzh4eG+LqdQcMozgD+SM2fOaPfu3apSpYrXRFEnadeunerUqaMXX3zR16UUij59+ujw4cN6++23L9vvcn/bK/385kgLAABX4OjRo1qxYoVWrFihl156ydflXHXHjx/Xpk2bNGfOnN8MLFcLoQUAgCvQqFEjHT16VOPGjVPNmjV9Xc5Vd9ttt2nNmjW6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V7ly5Ty3+fPn+7IsAABQBPn86yEAAIC8KDJnDwEAAFwOoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADgCoQUAADhCkQgtkydPVmxsrIKCgtSiRQutWbPG1yUBAIAixuehZf78+Ro2bJiSkpK0fv16NWjQQB07dtShQ4d8XRoAAChCfB5ann/+efXt21e9e/dW7dq19fLLLyskJETTp0/3dWkAAKAIKebLBz979qzWrVunkSNHetr8/PzUvn17ff755zn6Z2ZmKjMz07N8/PhxSdKJEyeuToG/eqyiIvO0ryvIXYH+DdjvecZ+9w32u28U2H4vgvtcugb2ey5jmln+VjQf+uGHH0ySrV692qt9xIgR1rx58xz9k5KSTBI3bty4cePG7Q9wS09Pz1du8OmRlvwaOXKkhg0b5lnOzs7WTz/9pMjISLlcLh9WVjhOnDihmJgYpaenKzw83NflXDPY777BfvcN9rtvXGv73cx08uRJlS9fPl/r+TS0lC5dWv7+/jp48KBX+8GDB1W2bNkc/d1ut9xut1dbiRIlrmqNRVF4ePg18aQuatjvvsF+9w32u29cS/s9IiIi3+v4dCJuYGCgmjRpog8//NDTlp2drQ8//FAtW7b0YWUAAKCo8fnXQ8OGDVNCQoKaNm2q5s2ba8KECTp9+rR69+7t69IAAEAR4p+cnJzsywLq1q2rEiVKaOzYsXruueckSampqapZs6Yvyyqy/P39FR8fr2LFfJ43rynsd99gv/sG+9032O+/zWWW3/ONAAAACp/PLy4HAACQF4QWAADgCIQWAADgCIQWAADgCIQWAAUiOTlZDRs29HUZeTJz5sxr8sKUgNMRWq4yl8t12duVnnG+ZMkSzxh+fn6KiIhQ48aNNXLkyBxXGHaaxMREde3a9XeNkZyc7Nk/xYoVU2xsrB544AGdOnWqgKp0rgMHDmjw4MGqWrWq3G63YmJi1KVLF6+LPPpKYmKi5+8WEBCgKlWq6KGHHtKZM2cK9HF69Oihbdu2FeiYTpOenq57771X5cuXV2BgoCpXrqz7779fR44cydF37ty58vf318CBA31QqTNc/NwtU6aMOnTooOnTpys7O9vX5f1hEFqusv3793tuEyZMUHh4uFfbgw8++LvGT0tL0759+7R27VoNHz5c7733nurVq6fvvvuugLbAuerUqaP9+/crLS1N48aN09SpUzV8+PBc+5qZzp8/f9VqOXfu3FUbOz/S0tLUpEkTffTRR3r22We1adMmLVmyRDfeeGOR+UC66aabtH//fu3atUsvvPCC/v3vfyspKalAHyM4OFjR0dEFOqaT7Nq1S02bNtX27ds1d+5c7dixQy+//LLnauQ//fSTV/9XXnlFDz30kObOnVvgAfKP5MJzNy0tTYsXL9aNN96o+++/X7fccstVfX+5plzxTzQj32bMmGERERG53rd8+XJr3LixBQYGWrly5eyxxx6z8+fPX3KsxYsXmyT7+eefvdpPnjxpVatWtXbt2nnazp8/b4899piVK1fOAgMDrXHjxvbBBx8UzEZdBQkJCXbbbbd5ltu2bWuDBw+2ESNGWMmSJa1MmTKWlJR02TGSkpKsQYMGXm19+/a1smXLmpnZxx9/bJLs/ffft8aNG1tAQIB9/PHHZmb20ksvWdWqVS0gIMCuu+46mzVrltc4W7ZssVatWpnb7bZatWrZ8uXLTZItXLjQzMx2795tkmzevHl2ww03mNvtthkzZpiZ2SeffGKtW7e2oKAgq1ixog0ePNhOnTrlGXvy5MlWvXp1c7vdFh0dbXfccYfnvgULFljdunUtKCjISpUqZe3atfNaNy86depkFSpUyHW9o0ePev69Z88eu/XWW6148eIWFhZm3bp1swMHDnj1T0lJsejoaAsNDbV7773XHn744Rz7fNq0aRYXF2dut9tq1qxpkydPvmx9F//tzcxuv/12a9SokVfb3r17rVu3bhYREWElS5a0W2+91Xbv3m1mZkuXLjW32+21PWZmQ4YMsRtvvNHMcn8tvvXWW9aoUSNzu91WpUoVS05OtnPnzpmZ2fDhw61z586evi+88IJJssWLF3vaqlWrZtOmTbvs9hUVN910k1WsWNEyMjK82vfv328hISF23333edp27dplwcHBduzYMWvRooWlpqYWdrmOkNtz18zsww8/NEme58ZvvbYuvHfNmjXLKleubOHh4dajRw87ceKEp09WVpY9/fTTFhsba0FBQVa/fn1bsGDB1d/IIoDQUoguFVp2795tbrfbhg4dalu2bLHXX3/dSpYsaSkpKZcc61KhxeyXDxM/Pz/Pm/bTTz9tJUuWtAULFtiWLVts6NCh5na7PW/yRU1uoSU8PNySk5Nt27Zt9t///tdcLpctW7bskmPkFlqGDBlipUqVMrP/H1rq169vy5Ytsx07dtiRI0fszTfftICAAJs8ebJt3brVxo8fb/7+/vbRRx+Z2S8BsGbNmtahQwf7+uuv7ZNPPrHmzZvnGlpiY2PtjTfesF27dtm+fftsx44dVrx4cXvhhRds27Zt9tlnn1mjRo0sMTHRzMzWrl1r/v7+NmfOHEtLS7P169fbxIkTzcxs3759VqxYMXv++edt9+7d9s0339jkyZPt5MmTed6vR44cMZfLZU8//fRl+2VlZVnDhg2tdevW9tVXX9kXX3xhTZo0sbZt23r6zJ8/39xut/3nP/+x7777zkaNGmVhYWFe+/zVV1+1cuXKefbBG2+8YaVKlbKZM2de8rEv/ttv2rTJypYtay1atPC0nT171mrVqmX33nuvffPNN7Z582a7++67rWbNmpaZmWnnz5+3MmXK2H/+8x/POhe3XfxaXLVqlYWHh9vMmTNt586dtmzZMouNjbXk5GQzM3v77bctIiLC8x+Jrl27WunSpe3hhx82M7Pvv//eJNn27dsvu2+Lgt96HvTt29dKlixp2dnZZmb2+OOP25133mlmZpMmTbI///nPhVark1wqtJiZNWjQwDp16pSn11ZSUpKFhoba7bffbps2bbJVq1ZZ2bJl7dFHH/X0eeqppywuLs6WLFliO3futBkzZpjb7bYVK1Zc7c30OUJLIbpUaBk2bJjVr1/fq238+PEWGRl5ybEuF1oWLlxokmzjxo1mZlaqVCkbP368V5969erZsGHDrmQzrrrcQkvr1q29+jRr1szzgZGbi0PLV199ZaVLl/a8+V4ILW+99ZbXetdff7317dvXq61bt2528803m9kv+71YsWK2f/9+z/2XOtIyYcIEr3H69Olj/fr182r75JNPzM/Pz37++Wd74403LDw83Ot/VBesW7fOJFlaWtolt/m3fPnllybJ3nzzzcv2W7Zsmfn7+9vevXs9bf/73/9Mkq1Zs8bMzFq2bGkDBgzwWq9FixZe+7xatWo2Z84crz5PPvmktWzZ8pKPnZCQYP7+/la8eHFzu90myfz8/Oz111/39Jk9e7bVrFnT86FqZpaZmWnBwcG2dOlSMzO7//77vT5cLz76cvFrsV27djk+xGfPnm3lypUzs1+OQvn5+dnatWstOzvbSpUqZSkpKZ4w9eqrr1qFChUuuV1FyRdffOH1fL3Y888/b5Ls4MGDlpWVZTExMZ7XyeHDhy0wMNB27dpVmCU7wuVCS48ePaxWrVp5em0lJSVZSEiI1/vAiBEjPM+1M2fOWEhIiK1evdrrMfr06WN33XVXQW9WkcOcliJgy5Ytuv76673aWrVqpSNHjujQoUP5Hs/+3y8zuFwuHTp0SD/99JNatWqVY/wtW7ZcedGFrH79+l7L5cqV+819s2nTJoWGhio4OFjNmzdXy5Yt9a9//curT9OmTb2Wt2zZctl9tXXrVsXExKhs2bKe+5s3b57r41889saNGzVz5kyFhoZ6bh07dlR2drZ2796tDh06qHLlyqpatar+9re/KTU1VRkZGZKkBg0aqF27dqpXr566deumadOm6ejRo5fd/otZHn+xY8uWLYqJiVFMTIynrXbt2ipRooRnP2zZskUtWrTwWu/Xv8x++vRp7dy5U3369PHa3qeeeko7d+687OPfeOON+vrrr/Xll18qISFBvXv31h133OG5f+PGjdqxY4fCwsI845YqVUpnzpzxjN2rVy+tWLFC+/btk/TL75l17tz5kmcMbdy4UU888YRXrX379tX+/fuVkZGhEiVKqEGDBlqxYoU2bdqkwMBA9evXTxs2bNCpU6e0cuVKtW3bNk/7t6j4redDYGCgli9frtOnT+vmm2+WJJUuXdozuRR5Z2ZyuVx5em1JUmxsrMLCwjzLv36/27Fj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
+" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">sprint</span> <span class="k">import</span> <span class="n">Sprint</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">Sprint</span><span class="o">.</span><span class="n">from_jira</span><span class="p">(</span><span class="s2">"DEV board"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/anaconda3/envs/jira/lib/python3.6/site-packages/jira/client.py:2949: Warning: Old private GreenHopper API is used, all parameters will be ignored.
+  warnings.warn('Old private GreenHopper API is used, all parameters will be ignored.', Warning)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre><sprint.sprint at 0x1117952e8></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">time_stamps</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>[]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">codes</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'To Do'</span><span class="p">,</span> <span class="s1">'In Progress'</span><span class="p">,</span> <span class="s1">'Code Review'</span><span class="p">,</span> <span class="s1">'QA'</span><span class="p">,</span> <span class="s1">'Done'</span><span class="p">)</span>
+
+<span class="n">colours</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">((</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">),</span> <span class="p">(</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">)))</span>
+<span class="n">colours</span><span class="p">[</span><span class="s1">'W'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"black"</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+<span class="n">UNIT_WIDTH</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1"># Pixels per story point</span>
+<span class="n">UNIT_HEIGHT</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Height of bar in pixels</span>
+<span class="n">blobs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">def</span> <span class="nf">issue_bar</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tot_len</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">typ</span><span class="p">,</span> <span class="n">issues</span> <span class="ow">in</span> <span class="n">points</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">blobs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">issues</span><span class="p">]</span>
+        <span class="n">tot_len</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">blobs</span><span class="p">))</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">,</span> <span class="p">(</span><span class="n">tot_len</span><span class="o">*</span><span class="n">UNIT_WIDTH</span><span class="p">,</span> <span class="n">UNIT_HEIGHT</span><span class="p">))</span>
+    <span class="c1">#print("Image size", (tot_len*UNIT_WIDTH, UNIT_HEIGHT))</span>
+    <span class="k">for</span> <span class="n">typ</span> <span class="ow">in</span> <span class="s1">'TICQDW'</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">issues</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">typ</span><span class="p">]</span>
+            <span class="n">blobs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">issues</span><span class="p">]</span>
+            <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">ImageDraw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">blobs</span><span class="p">:</span>
+                <span class="n">b</span> <span class="o">*=</span> <span class="n">UNIT_WIDTH</span>
+                <span class="c1">#print(f"Filling {(pos, 0), (pos+b, UNIT_HEIGHT)} with {colours[typ]}")</span>
+                <span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(((</span><span class="n">pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">UNIT_HEIGHT</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">typ</span><span class="p">])</span>
+                <span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">(((</span><span class="n">pos</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">UNIT_HEIGHT</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+                <span class="n">pos</span> <span class="o">+=</span> <span class="n">b</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="n">img</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">IM</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">edict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">issue_bar</span><span class="p">(</span><span class="n">edict</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s1">'points'</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">W</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">images</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">UNIT_HEIGHT</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">edict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">final</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">),</span> <span class="s2">"white"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">final</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[19]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>(1272, 1000)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+    <span class="n">final</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">+</span><span class="n">UNIT_HEIGHT</span><span class="p">)))</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">UNIT_HEIGHT</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">final</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[21]:</div>
+<div class="output_png output_subarea output_execute_result">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABPgAAAPoCAIAAADMVNfYAAAb3klEQVR4nO3ZQY7kNrZAUeojd+nFNL0Yr5M9KDe+AAMqlUOpCN06Z8AaiOCjM13dvuC2xpHtxx/zcNNV5olZZ/Z8mrlbb5m11vFvFQAAoOz/3n0BAAAAuJLQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJCyrePPY4wx7tlzxi/MWq9PAwAA4Hm86AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkbOueMWOMMT5n1t97/vr2y1xo+2OM4p1/7Bnz+29zoblb+ae5W2+ZtdY9/+sCAMAzeNEFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASNnW8ecxxhiP3LOOdwEAANDkRRcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAg5euyk9Y6+njmgBv3AAAAUOVFFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACDl67KTtu3o4xhjjHV8wIk9n+bvf+Z5y7B5YtaZPadnrfWs3wYAAMAYXnQBAACIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUra11rvvAAAAAJfxogsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQsq3jz2OMMT5tz6ld83DLp5lnN651/M8OAADwu/OiCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJCyrePPY4wxzuwZ84rr3Gbu1tKsq8zdWjrnqlln9lzFLLO+29ytTzF36/GeG611/P+WAMB9vOgCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApGzr+PMYYwx7nrLnjE+7zxnVWVf5+85/vfkav2T748efJ/4tm999l/H/U16fddU5d5q79Snmbn2KuVufYu7Wp5i79Z5Z8IK1nvVfHPAkXnQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUrb117uv8Cu2P87uXGt950UAAAD4UF50AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFK2dfx5jDHG8Z5P89w7j/nyQfOic8y6Z9ZV5m69ZdZaz/obBgDA78WLLgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAEDKto4/jzHGWOt4FwAAAHwKL7oAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClfp3Zt29HHMcYY6/iA83vW8S4AAAA44kUXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFK+3n2Bf9i2o49jjDHWPTe5SPXOb9hzyw/xf/8C9n5jn2YbY4z55kv8mrlbX9lzlTtnXWWOMca65y8zAPAb86ILAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkLKNse4aNMa8ZdRV5m79hHPMilrrnr+DAADwu/CiCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJCyrePPY4wx7PnJnnW8CwAAgPt40QUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABI+Xr3Bf5hraOPZw74sD0AAADcyYsuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQMo25uH3uVu/25lZV+25yhxjjLXWLcMAAAD4OS+6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAACnbmO++wi+Zu/Up5t0D11p3jwQAAPgYXnQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUra11rvvAAAAAJfxogsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQso15y5y5W0uzrjJ3a2nWVeZufYp598C11t0jAQDgI3nRBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEjZ1vHnMcYYp/as410AAABwBy+6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClfl520bUcff/wxL5t2ZI4xxlrrlmEAAAB8Fi+6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClf2zz8PscY4yd7xhhjbK/fBQAAAF7mRRcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgZRvzljlzjDHWWrcMAwAA4PflRRcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgZVvHn8cYY5zas453AQAAwB286AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkfF120rYdfRxjjLGOD7h0zxlrHZ8EAADA83jRBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEj5uuyktY4+njngxj0AAABUedEFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASPm67KRte/WAMcYY6/WbfOSsMV8+aJ4456o9n2bu1pfPWeue3zwAAPAeXnQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUrYxb5kzd2tu1lrrlmEAAAD8nBddAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgJSvn3yfu5V/mmOMsf25XXLOw37Oc7c+xdytTzF361PM3VqadZW5Wz/hnKp55WFrrSuPAwC+mRddAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgJRtzFvmzN36FHO35mattW4ZBgAAcDcvugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAAp25iH3+du/W7VWVeZu/Up5m416/vO+bRZV5m79SmzrjrnTnO3ls65c9bpE9ZaLw8DAH7Oiy4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAyjbmu6/wS+ZufYq5W59i7tanmLv1lllrrVuGAQAAv8aLLgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAEDK1wVnzN1aMnfrVacdWmtdNOxl/3n3Bf6FO+/8xJ8PAAD8NrzoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKR8vfsCO3O3lmbtJx7a/tx+fsKJcz7I3K1mvdc8u3Gt9Y3XAACA7+dFFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACDl64Iz5gVnXHnOVebpPcc77zznjPOzrpr4LHO3Hu/5HHO3Hu85Yftze+Eqp83d6pz3zvq0c6qz7jznqlln3DnrKnO3fsKsM3uucuesq8zd+hRztz7F3K1PMXfrJ5zzabOuMt99gX/Liy4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAyrbefYNfso0xxji+85k9n+bvO//15mv8ku2PMcZY61k/aQAAoM+LLgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAEDK9u4L/BtrrXdfAQAAgA/lRRcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgZVvvvsHH2sYYY6zlJwQAAPAkXnQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUrYxXz5j7tbvdtWsq86509ytTzF361PM3dqbdaO11t0jAQBgjOFFFwAAgBihCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACDl64Iz5uk9Z3a+Puuqc+alE3/PWXeau/X1c3qzzk+8aMr253bbrMt+F8fnXDXrTnO3vn7OCWutl4cBALzKiy4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAyraOP48xxrhszzreBQAAAK/yogsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQ8nXrtG27Y8iPP+bhpnliz6eZu7V0zqfNusp89wX+rbXWu68AAAAv8aILAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKQIXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkLKt488//piHm+aJPVe5fdZaxz8hAAAAPosXXQAAAFKELgAAAClCFwAAgBShCwAAQIrQBQAAIEXoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAICUr20efj/+er956TknTtv+3C4aeYu5W59i7laz3mue3bjW+sZrAADAa7zoAgAAkCJ0AQAASBG6AAAApAhdAAAAUoQuAAAAKUIXAACAFKELAABAitAFAAAgRegCAACQInQBAABIEboAAACkCF0AAABShC4AAAApQhcAAIAUoQsAAECK0AUAACBF6AIAAJAidAEAAEgRugAAAKT8F41Cvngt+5byAAAAAElFTkSuQmCC
+" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [36]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span><span class="o">,</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">PIL.ImageOps</span> <span class="k">import</span> <span class="n">mirror</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+<span class="n">UNIT_WIDTH</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Pixels per story point</span>
+<span class="n">UNIT_HEIGHT</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># Height of bar in pixels</span>
+
+<span class="n">blobs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">codes</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'To Do'</span><span class="p">,</span> <span class="s1">'In Progress'</span><span class="p">,</span> <span class="s1">'Code Review'</span><span class="p">,</span> <span class="s1">'QA'</span><span class="p">,</span> <span class="s1">'Done'</span><span class="p">)</span>
+<span class="n">colours</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">((</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">),</span> <span class="p">(</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">)))</span>
+<span class="n">colours</span><span class="p">[</span><span class="s1">'W'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"black"</span>
+
+<span class="k">def</span> <span class="nf">issue_bar</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tot_len</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sdict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">,</span> <span class="p">(</span><span class="n">tot_len</span><span class="o">*</span><span class="n">UNIT_WIDTH</span><span class="p">,</span> <span class="n">UNIT_HEIGHT</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">typ</span> <span class="ow">in</span> <span class="s1">'TICQDW'</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">issues</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">typ</span><span class="p">]</span>
+            <span class="n">blobs</span> <span class="o">=</span> <span class="p">[</span><span class="n">issues</span><span class="p">]</span>
+            <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">ImageDraw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">blobs</span><span class="p">:</span>
+                <span class="n">b</span> <span class="o">*=</span> <span class="n">UNIT_WIDTH</span>
+                <span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(((</span><span class="n">pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">UNIT_HEIGHT</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">typ</span><span class="p">])</span>
+                <span class="c1">#draw.line(((pos+b, 0), (pos+b, UNIT_HEIGHT)), fill='black', width=5)</span>
+                <span class="n">pos</span> <span class="o">+=</span> <span class="n">b</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="n">img</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [40]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"database.sqlite3"</span><span class="p">)</span>
+<span class="n">curs</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">curs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">select stamp, status, sum(estimate) from records</span>
+<span class="s2">    where sprint = 'DEV Sprint 53'</span>
+<span class="s2">    group by stamp, status</span>
+<span class="s2">    order by stamp, status;"""</span><span class="p">)</span>
+
+<span class="n">ims</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">stamp</span><span class="p">,</span> <span class="n">statuses</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">curs</span><span class="o">.</span><span class="n">fetchall</span><span class="p">(),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">sdict</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="p">(</span><span class="n">e</span> <span class="k">if</span> <span class="n">e</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">}</span>
+    <span class="n">ims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">issue_bar</span><span class="p">(</span><span class="n">sdict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [41]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sdict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[41]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>{'C': 3, 'D': 49, 'I': 32, 'Q': 20, 'T': 8}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [42]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">UNIT_HEIGHT</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ims</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">im</span> <span class="ow">in</span> <span class="n">ims</span><span class="p">)</span>
+<span class="n">final</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+<span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">ImageDraw</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">im</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ims</span><span class="p">):</span>
+    <span class="n">final</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="n">UNIT_HEIGHT</span><span class="p">))</span>
+
+<span class="n">final</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[42]:</div>
+<div class="output_png output_subarea output_execute_result">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAACgCAIAAABbvH8zAAACtUlEQVR4nO3dXW7qMBQAYafqKmEz3kzZJn2oiiDkxyHj+CSZ762Fe9uOjqyYBNLdUws/Ff7Py8tXXYf/ZV3Jk77on3p2BoUZFPbd+hcIL/8vnbno6U4ozKAwg8IMCjMozKAwg8L4He+MGrv4nsvA97Ct/dxhqRMKMyjMoDB0L7/B+jio6qK5kBMKMyjMoLAla2irJXLM0NKJyUVnkN45oTCDwgwKK1hDgyydkyvm50edS9fKPPO4EwozKMygsNMHzQsX3zzz+OmD0gwKMyisIOi1/m9R4jb14P3+4dY7JXgZdUJhBoUZFDaylz/2/j3xW/gHJxRmUJhBYTGusa+3Vm7OCYUZFGZQ2CmDfnrOvcQpg9ZkUJhBYQaFGRRmUJhBYSP75Lavh85d+LndlUwv/7boWU4ozKAwg8IMCjMozKAwg8JinFP6U/V9R1txQmEGhRkUFmkNHbf21HzNk0g9TijMoDCDwmK8HlrvBdAxyKqaB77nhMIMCjMoLPRxaNClc5ITCjMozKAwg8IMCjMozKCwQHv5Bu9HYg9Lc0pOKM6gMIPCQu/la/F9SjtiUJhBYQaFGRRmUJhBYQaFGRRmUJhBYUN7+SAffLfehpeFPjihMIPCDAorOI+z5ZL6dKEocIpp4zU0p+SE4gwKMygs4nHo/lbPJ04ozKAwg8Jan5fvXdUU5L4jKzihMIPCDAozKMygMIPCDAprfRxKabd573FCYQaFGRTWaA1d/zF3YRbNHicUZlCYQWEhgn5yZ+OlNzTeQE4pSNAjMSjMoLChoNf653ZuM/eL3y8nFGZQmEFh7YIe4lPr3zmhMIPCDAoLEXRfd5CfFiLokRgUZlBY+6ArbtIZb+XNAYIejEFhBoUZFGZQmEFhBoUZFGZQmEFhBoUZFGZQmEFhBoUZFGZQmEFhBoX9Aro3QE+u3JBvAAAAAElFTkSuQmCC
+" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now try histogramming the states?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [43]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">w</span><span class="p">,</span> <span class="n">h</span>  <span class="o">=</span> <span class="n">final</span><span class="o">.</span><span class="n">size</span>
+<span class="n">mirror</span><span class="p">(</span><span class="n">final</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">resample</span><span class="o">=</span><span class="n">Image</span><span class="o">.</span><span class="n">BILINEAR</span><span class="p">))</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[43]:</div>
+<div class="output_png output_subarea output_execute_result">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAABwCAIAAADg/z7kAAAC6klEQVR4nO3dQW7bMBAF0LjwKZvL6DLpNd1FUaBFwcKySQ0/+d7SCGQm0NeMxpRze3wAqb5VLwB4nQBDMAGGYAIMwQQYgt2rF0C4r8brnyd/vkprnSHWDfBsJwoMsG6A4RnhF3r3wBBMgCHYfC302ZYmfAixrPDWNMV8AT7LicLGtNAQrK4Cq5zwNhUYggkwBBNgCCbAEEyAIZgAQzABhmACDMEEGIIJMAQbv5XSlkkYRgWGYAIMwQQYggkwBBNgCCbAEEyAIZgAQzABhmACDMEEGIL12wttzzNcTgWGYHeVk6V8P/nzP4as4jL5/xsJRjh7ISgiwOwtJKgtAswcwoNURYChg9vtUfK++wW415V+9PAjvSKd/PuMDsDjcetynKqgtuwXYLY0W/B6EeCrFFXUqhP38dWn4vF/AswYZy9Yn0NWsTw7sSCYCvyq9CFTkVXvRauowBBMBWYIlfYa6wZ40RZXMPiTFhqCrVuBG3pVsF47e+Ad2wV4Nlpi3jFfgDd7IBveMV+Az1p0WAXPMMSCYAIMwfJb6CKGT8xAgFnL0fh471jzglsX4MHDJxWSv7SC3e34vlIHco2+QDQYYkGw8RXY57QwzHQt9Nl7V3uSN1XUss7mHvM1qw2GVezMPTAEE2AI1u8e2LAKLjfdEIvFGT51dR/9DRWGTDCOCsx7VNRShlgQTIAhmBa62maPv9FXtwAbVsH1tNAQTAv9qqrp69n31YovTQWGYCrwb7t9nrnb77uodQOcfoKmr59LaKEh2LoVmF9U8qXNF2AbG+Bp8wW4RbDhHzkBbtEisjFDLAgmwBBMgCGYAEMwAYZgdVNo02N4mwoMwQQYgrVbaA+Ow/RUYAiWv5Wy5Qg/Pjzh/vHRekjg0nXkOcKPzxK00BCsXwvd63Pd4+TrsLGce+Dj5OuwgZwAtxzVC4A69jPO6qheAAkEeHVH9QIYyRQaggkwBBNgCCbAEMwQiz0c1QsYQ4Chh6PmbX8C9RtJ4kzB4kkAAAAASUVORK5CYII=
+" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">colours</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">((</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">),</span> <span class="p">(</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">)))</span>
+<span class="n">cols</span><span class="p">[</span><span class="s1">'Won</span><span class="se">\'</span><span class="s1">t Do'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"black"</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{k}</span><span class="s2">: </span><span class="si">{c}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">li</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">assignee</span><span class="o">.</span><span class="n">emailAddress</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>kjhlkjhlkjhk lkjh lkjh lkjh h lkjh lkjh lkjh lkjh</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>hello world</p>
+<p>$x = 3$</p>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../smaple-jupyter-notebook.html" rel="bookmark"
+                           title="Permalink to Sample Jupyter Notebook">Sample Jupyter Notebook</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-02-26T00:00:00+00:00">
+                Published: Mon 26 February 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/steve-holden.html">Steve Holden</a>
+        </address>
+<p>In <a href="../category/programming.html">Programming</a>.</p>
+<p>tags: <a href="../tag/this.html">this</a> <a href="../tag/that.html">that</a> <a href="../tag/the_other.html">the_other</a> </p>
+</footer><!-- /.post-info -->                
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-Quick-Tour-of-Pandas">A Quick Tour of Pandas<a class="anchor-link" href="#A-Quick-Tour-of-Pandas">¶</a></h1><h3 id="Compare-the-average-temperature-of-San-Francisco-and-Portland">Compare the average temperature of San Francisco and Portland<a class="anchor-link" href="#Compare-the-average-temperature-of-San-Francisco-and-Portland">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+                <a class="readmore" href="../smaple-jupyter-notebook.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
